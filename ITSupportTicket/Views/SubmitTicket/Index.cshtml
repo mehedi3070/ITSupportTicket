@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ITSupportTicket.tblSubmitTicket>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ticket Submission</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attachment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tblTicket.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priority)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Attachment)*@
+
+                    @*<a href="../Uploads/File/@(item.SubmitTicketId.ToString()+"_"+item.SubmitTicketId)" />Download_File</a>*@
+
+                    <a href="../Uploads/File/@(item.SubmitTicketId.ToString()+"_"+item.Attachment)">Download</a>
+
+
+
+                    @*<a href="~/Uploads/File/Mehedi Hasan.doc">#</a>*@
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblTicket.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SubmitTicketId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.SubmitTicketId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SubmitTicketId })
+
+                    
+                </td>
+            </tr>
+        }
+
+    </table>
+

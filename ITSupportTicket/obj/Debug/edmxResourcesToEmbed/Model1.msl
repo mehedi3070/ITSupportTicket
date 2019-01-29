@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SupportTicketDbModelStoreContainer" CdmEntityContainer="MyCon">
+    <EntitySetMapping Name="tblAssigneds">
+      <EntityTypeMapping TypeName="SupportTicketDbModel.tblAssigned">
+        <MappingFragment StoreEntitySet="tblAssigned">
+          <ScalarProperty Name="AssignedId" ColumnName="AssignedId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblComments">
+      <EntityTypeMapping TypeName="SupportTicketDbModel.tblComment">
+        <MappingFragment StoreEntitySet="tblComments">
+          <ScalarProperty Name="CommentsId" ColumnName="CommentsId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmails">
+      <EntityTypeMapping TypeName="SupportTicketDbModel.tblEmail">
+        <MappingFragment StoreEntitySet="tblEmail">
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStaffTickets">
+      <EntityTypeMapping TypeName="SupportTicketDbModel.tblStaffTicket">
+        <MappingFragment StoreEntitySet="tblStaffTicket">
+          <ScalarProperty Name="StaffTicketId" ColumnName="StaffTicketId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="StaffEmail" ColumnName="StaffEmail" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSubmitTickets">
+      <EntityTypeMapping TypeName="SupportTicketDbModel.tblSubmitTicket">
+        <MappingFragment StoreEntitySet="tblSubmitTicket">
+          <ScalarProperty Name="SubmitTicketId" ColumnName="SubmitTicketId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTickets">
+      <EntityTypeMapping TypeName="SupportTicketDbModel.tblTicket">
+        <MappingFragment StoreEntitySet="tblTicket">
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffWiseReports">
+      <EntityTypeMapping TypeName="SupportTicketDbModel.StaffWiseReport">
+        <MappingFragment StoreEntitySet="StaffWiseReport">
+          <ScalarProperty Name="PendingReport" ColumnName="PendingReport" />
+          <ScalarProperty Name="SolveReport" ColumnName="SolveReport" />
+          <ScalarProperty Name="StaffEmail" ColumnName="StaffEmail" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

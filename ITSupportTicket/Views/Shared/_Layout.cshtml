@@ -1,0 +1,238 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - IT Support</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!-- Bootstrap CSS -->
+    <link href="~/Theme/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="~/Theme/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="~/Theme/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="~/Theme/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="~/Theme/css/style.css" rel="stylesheet">
+    <link href="~/Theme/css/style-responsive.css" rel="stylesheet" />
+
+
+
+
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Software Support Management System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Users Feedback", "Feedback", "Comment")</li>
+
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <!-- container section start -->
+    <section id="container" class="">
+        <!--header start-->
+
+        @*<header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i> </div>
+
+            </div>
+
+            <!--logo start-->
+            <a href="index.html" class="logo"><span class="lite">Admin Panel</span></a>
+            <!--logo end-->
+
+            <div class="nav search-row" id="top_menu">
+
+
+                <!-- notificatoin dropdown end-->
+            </div>
+
+
+        </header>*@
+        <!--header end-->
+        <!--sidebar start-->
+
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu">
+                    <li class="">
+                        
+                    </li>
+
+
+                    
+
+
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="@*btn btn-info*@">
+                            <i class="icon_desktop"></i>
+                            <span>User</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            @*<li><a class="" href="form_component.html">Form Elements</a></li>
+                <li><a class="" href="form_validation.html">Form Validation</a></li>*@
+
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Submit Ticket", "Index", "SubmitTicket")</li>
+                            <li>@Html.ActionLink("View Ticket", "Index", "SubmitTicket")</li>
+                            
+                            <li>@Html.ActionLink("View Solve Ticket", "ViewSolve", "StaffTicket")</li>
+                            <li>@Html.ActionLink("Message", "Index", "Email")</li>
+                            <li>@Html.ActionLink("Comment", "Index", "Comment")</li>
+                            
+
+
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_document_alt"></i>
+                            <span>Admin</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            @*<li><a class="" href="form_component.html">Form Elements</a></li>
+        <li><a class="" href="form_validation.html">Form Validation</a></li>*@
+
+                            <li>@Html.ActionLink("Ticket ID", "Index", "Ticket")</li>
+
+                            <li>@Html.ActionLink("View Ticket", "AdminView", "SubmitTicket")</li>
+
+                            <li>@Html.ActionLink("View Solve Ticket", "ViewSolveAdmin", "StaffTicket")</li>
+                            <li>@Html.ActionLink("Message", "Index", "Email")</li>
+
+                            <li>@Html.ActionLink("Assigned to Staff", "Index", "Assigned")</li>
+                            <li>@Html.ActionLink("Submitted Ticket Report", "Report", "SubmitTicket")</li>
+                            <li>@Html.ActionLink("Solved Ticket Report", "SolveReport", "StaffTicket")</li>
+                            
+                            <li>@Html.ActionLink("Staff Wise Report", "StaffDailyR", "StaffWiseReport")</li>
+
+
+
+
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_document_alt"></i>
+                            <span>Staff</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            @*<li><a class="" href="form_component.html">Form Elements</a></li>
+        <li><a class="" href="form_validation.html">Form Validation</a></li>*@
+
+                            <li>@Html.ActionLink("Assigned Ticket", "AssignedT", "Assigned")</li>
+
+                            <li>@Html.ActionLink("View Ticket", "StaffView", "SubmitTicket")</li>
+                            <li>@Html.ActionLink("Solve Ticket", "Index", "StaffTicket")</li>
+                            <li>@Html.ActionLink("View Solve Ticket", "Index", "StaffTicket")</li>
+                            <li>@Html.ActionLink("Message", "StaffMessage", "Email")</li>
+                            
+                            <li>@Html.ActionLink("All Report", "Index", "StaffWiseReport")</li>
+
+
+
+
+
+                        </ul>
+                    </li>
+                    @*<li>
+            <a class="" href="widgets.html">
+                <i class="icon_genius"></i>
+                <span>Widgets</span>
+            </a>
+        </li>*@
+                    @*<li>
+            <a class="" href="chart-chartjs.html">
+                <i class="icon_piechart"></i>
+                <span>Charts</span>
+
+            </a>
+
+        </li>*@
+
+                    
+                    
+
+
+
+
+
+
+
+
+
+
+                            @*<li><a class="" href="profile.html">Profile</a></li>
+                <li><a class="" href="login.html"><span>Login Page</span></a></li>
+                <li><a class="active" href="blank.html">Blank Page</a></li>
+                <li><a class="" href="404.html">404 Error</a></li>*@
+                     
+
+                
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+
+                <!-- page start-->
+                @RenderBody()
+
+
+                <!-- page end-->
+            </section>
+        </section>
+        <!--main content end-->
+
+    </section>
+    <!-- container section end -->
+    <!-- javascripts -->
+    <script src="~/Theme/js/jquery.js"></script>
+    <script src="~/Theme/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <!-- nice scroll -->
+    <script src="~/Theme/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Theme/js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
+    <script src="~/Theme/js/scripts.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

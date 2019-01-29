@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SupportTicketDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblAssigned">
+    <Key>
+      <PropertyRef Name="AssignedId" />
+    </Key>
+    <Property Name="AssignedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="Int32" />
+    <Property Name="StaffName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblTicket" Relationship="Self.FK__tblAssign__Ticke__4222D4EF" FromRole="tblAssigned" ToRole="tblTicket" />
+  </EntityType>
+  <EntityType Name="tblComment">
+    <Key>
+      <PropertyRef Name="CommentsId" />
+    </Key>
+    <Property Name="CommentsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblTicket" Relationship="Self.FK__tblCommen__Ticke__3F466844" FromRole="tblComments" ToRole="tblTicket" />
+  </EntityType>
+  <EntityType Name="tblEmail">
+    <Key>
+      <PropertyRef Name="EmailId" />
+    </Key>
+    <Property Name="EmailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="From" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="To" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblStaffTicket">
+    <Key>
+      <PropertyRef Name="StaffTicketId" />
+    </Key>
+    <Property Name="StaffTicketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="Int32" />
+    <Property Name="StaffEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Attachment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblTicket" Relationship="Self.FK__tblStaffT__Ticke__3C69FB99" FromRole="tblStaffTicket" ToRole="tblTicket" />
+  </EntityType>
+  <EntityType Name="tblSubmitTicket">
+    <Key>
+      <PropertyRef Name="SubmitTicketId" />
+    </Key>
+    <Property Name="SubmitTicketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Priority" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Attachment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblTicket" Relationship="Self.FK__tblSubmit__Ticke__398D8EEE" FromRole="tblSubmitTicket" ToRole="tblTicket" />
+  </EntityType>
+  <EntityType Name="tblTicket">
+    <Key>
+      <PropertyRef Name="TicketId" />
+    </Key>
+    <Property Name="TicketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblAssigneds" Relationship="Self.FK__tblAssign__Ticke__4222D4EF" FromRole="tblTicket" ToRole="tblAssigned" />
+    <NavigationProperty Name="tblComments" Relationship="Self.FK__tblCommen__Ticke__3F466844" FromRole="tblTicket" ToRole="tblComments" />
+    <NavigationProperty Name="tblStaffTickets" Relationship="Self.FK__tblStaffT__Ticke__3C69FB99" FromRole="tblTicket" ToRole="tblStaffTicket" />
+    <NavigationProperty Name="tblSubmitTickets" Relationship="Self.FK__tblSubmit__Ticke__398D8EEE" FromRole="tblTicket" ToRole="tblSubmitTicket" />
+  </EntityType>
+  <Association Name="FK__tblAssign__Ticke__4222D4EF">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblAssigned" Type="Self.tblAssigned" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblAssigned">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblCommen__Ticke__3F466844">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblComments" Type="Self.tblComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblComments">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblStaffT__Ticke__3C69FB99">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblStaffTicket" Type="Self.tblStaffTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblStaffTicket">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblSubmit__Ticke__398D8EEE">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblSubmitTicket" Type="Self.tblSubmitTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblSubmitTicket">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyCon" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAssigneds" EntityType="Self.tblAssigned" />
+    <EntitySet Name="tblComments" EntityType="Self.tblComment" />
+    <EntitySet Name="tblEmails" EntityType="Self.tblEmail" />
+    <EntitySet Name="tblStaffTickets" EntityType="Self.tblStaffTicket" />
+    <EntitySet Name="tblSubmitTickets" EntityType="Self.tblSubmitTicket" />
+    <EntitySet Name="tblTickets" EntityType="Self.tblTicket" />
+    <AssociationSet Name="FK__tblAssign__Ticke__4222D4EF" Association="Self.FK__tblAssign__Ticke__4222D4EF">
+      <End Role="tblTicket" EntitySet="tblTickets" />
+      <End Role="tblAssigned" EntitySet="tblAssigneds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblCommen__Ticke__3F466844" Association="Self.FK__tblCommen__Ticke__3F466844">
+      <End Role="tblTicket" EntitySet="tblTickets" />
+      <End Role="tblComments" EntitySet="tblComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblStaffT__Ticke__3C69FB99" Association="Self.FK__tblStaffT__Ticke__3C69FB99">
+      <End Role="tblTicket" EntitySet="tblTickets" />
+      <End Role="tblStaffTicket" EntitySet="tblStaffTickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblSubmit__Ticke__398D8EEE" Association="Self.FK__tblSubmit__Ticke__398D8EEE">
+      <End Role="tblTicket" EntitySet="tblTickets" />
+      <End Role="tblSubmitTicket" EntitySet="tblSubmitTickets" />
+    </AssociationSet>
+    <EntitySet Name="StaffWiseReports" EntityType="SupportTicketDbModel.StaffWiseReport" />
+  </EntityContainer>
+  <EntityType Name="StaffWiseReport">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StaffName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StaffEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SolveReport" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PendingReport" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ITSupportTicket.StaffWiseReport>
+
+@{
+    ViewBag.Title = "Staff Wise Report by Ntitas IT Lim.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Staff Wise Report</h3>
+
+<script type="text/javascript">
+
+    function pt() {
+
+        var v = document.body.innerHTML;
+        document.body.innerHTML = document.getElementById("print").innerHTML;
+        print();
+        document.body.innerHTML = v;
+
+
+    }
+</script>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div id="print">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SolveReport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PendingReport)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SolveReport)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PendingReport)
+                </td>
+                <td>
+
+                    
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div><input type="button" class="btn btn-success btn-sm" value="Print" onclick="pt()" /></div>

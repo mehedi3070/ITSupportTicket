@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SupportTicketDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="StaffWiseReport">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StaffEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SolveReport" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PendingReport" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblAssigned">
+    <Key>
+      <PropertyRef Name="AssignedId" />
+    </Key>
+    <Property Name="AssignedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketId" Type="int" />
+    <Property Name="StaffName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblComments">
+    <Key>
+      <PropertyRef Name="CommentsId" />
+    </Key>
+    <Property Name="CommentsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketId" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Comments" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblEmail">
+    <Key>
+      <PropertyRef Name="EmailId" />
+    </Key>
+    <Property Name="EmailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="From" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="To" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblStaffTicket">
+    <Key>
+      <PropertyRef Name="StaffTicketId" />
+    </Key>
+    <Property Name="StaffTicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketId" Type="int" />
+    <Property Name="StaffEmail" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="UserEmail" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Subject" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Attachment" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSubmitTicket">
+    <Key>
+      <PropertyRef Name="SubmitTicketId" />
+    </Key>
+    <Property Name="SubmitTicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketId" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Subject" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Priority" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Attachment" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblTicket">
+    <Key>
+      <PropertyRef Name="TicketId" />
+    </Key>
+    <Property Name="TicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <Association Name="FK__tblAssign__Ticke__4222D4EF">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblAssigned" Type="Self.tblAssigned" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblAssigned">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblCommen__Ticke__3F466844">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblComments" Type="Self.tblComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblComments">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblStaffT__Ticke__3C69FB99">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblStaffTicket" Type="Self.tblStaffTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblStaffTicket">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblSubmit__Ticke__398D8EEE">
+    <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="0..1" />
+    <End Role="tblSubmitTicket" Type="Self.tblSubmitTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="tblSubmitTicket">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SupportTicketDbModelStoreContainer">
+    <EntitySet Name="StaffWiseReport" EntityType="Self.StaffWiseReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAssigned" EntityType="Self.tblAssigned" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblComments" EntityType="Self.tblComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEmail" EntityType="Self.tblEmail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStaffTicket" EntityType="Self.tblStaffTicket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSubmitTicket" EntityType="Self.tblSubmitTicket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTicket" EntityType="Self.tblTicket" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblAssign__Ticke__4222D4EF" Association="Self.FK__tblAssign__Ticke__4222D4EF">
+      <End Role="tblTicket" EntitySet="tblTicket" />
+      <End Role="tblAssigned" EntitySet="tblAssigned" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblCommen__Ticke__3F466844" Association="Self.FK__tblCommen__Ticke__3F466844">
+      <End Role="tblTicket" EntitySet="tblTicket" />
+      <End Role="tblComments" EntitySet="tblComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblStaffT__Ticke__3C69FB99" Association="Self.FK__tblStaffT__Ticke__3C69FB99">
+      <End Role="tblTicket" EntitySet="tblTicket" />
+      <End Role="tblStaffTicket" EntitySet="tblStaffTicket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblSubmit__Ticke__398D8EEE" Association="Self.FK__tblSubmit__Ticke__398D8EEE">
+      <End Role="tblTicket" EntitySet="tblTicket" />
+      <End Role="tblSubmitTicket" EntitySet="tblSubmitTicket" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

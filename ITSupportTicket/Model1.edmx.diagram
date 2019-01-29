@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dccae1bb6f69454fb8f4674521d4c25a" Name="Diagram1">
+        <EntityTypeShape EntityType="SupportTicketDbModel.tblAssigned" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupportTicketDbModel.tblComment" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupportTicketDbModel.tblEmail" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupportTicketDbModel.tblStaffTicket" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupportTicketDbModel.tblSubmitTicket" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupportTicketDbModel.tblTicket" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="SupportTicketDbModel.FK__tblAssign__Ticke__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="SupportTicketDbModel.FK__tblCommen__Ticke__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="SupportTicketDbModel.FK__tblStaffT__Ticke__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="SupportTicketDbModel.FK__tblSubmit__Ticke__398D8EEE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SupportTicketDbModel.StaffWiseReport" Width="1.5" PointX="5.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

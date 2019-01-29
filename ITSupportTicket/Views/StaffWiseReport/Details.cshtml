@@ -1,0 +1,51 @@
+﻿@model ITSupportTicket.StaffWiseReport
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StaffWiseReport</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SolveReport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SolveReport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PendingReport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PendingReport)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StaffID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
